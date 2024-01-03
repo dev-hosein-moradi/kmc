@@ -8,28 +8,71 @@ import {
   ChevronDownIcon,
   LinkIcon,
 } from "@heroicons/react/24/outline";
-import SideBar, { MenuItem, menuItems } from "./sidebar";
+import SideBar, { menuItems } from "./sidebar";
 import KMC_LOGO from "@/public/kmc-logo.png";
+import MegaMenu from "./megaMenu";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState<number>(0);
+  const [isExtended, setIsExtended] = useState(false);
 
   const toggler = () => {
     setIsOpen(!isOpen);
   };
+  const extendler = (id: number) => {
+    if (id === activeTab) {
+      setIsExtended((prev) => !prev);
+    }
+    if (activeTab === 0) {
+      setIsExtended(true);
+    }
+  };
+  const activeTabHandler = (id: number) => {
+    setActiveTab(id);
+  };
 
-  const depthLevel: number = 0;
   return (
-    <header className="flex items-center justify-between bg-gray-950 relative">
+    <header className="flex items-center justify-between bg-gray-950 relative z-[6]">
       {/* burger menu */}
       <button className="p-4 lg:hidden" onClick={toggler}>
         <Bars3Icon className="h-8 w-8 text-gray-50 font-semibold" />
       </button>
       {/* nav links for large screen */}
-      <nav className="lg:flex flex-row pr-4 hidden">
-        {menuItems.map((menu, index) => (
-          <LargeMenuItem key={index} item={menu} depthLevel={depthLevel} />
-        ))}
+      <nav className="lg:flex flex-row pr-4 hidden relative">
+        <ul className="flex flex-row text-white">
+          {menuItems.map((item, index) => {
+            return item.submenu ? (
+              <li
+                className="border-l-[1px] border-gray-800 text-sm flex items-center ml-1 px-1 cursor-pointer"
+                key={index}
+                onClick={() => {
+                  extendler(item.id);
+                  activeTabHandler(item.id);
+                }}
+              >
+                {item.title}
+                <span className="mr-1">
+                  <ChevronDownIcon className="h-3 w-3" />
+                </span>
+              </li>
+            ) : (
+              <Link
+                className="border-l-[1px] border-gray-800 last-of-type:border-none text-sm ml-1 px-1"
+                key={index}
+                href={item.url}
+              >
+                {item.title}
+              </Link>
+            );
+          })}
+        </ul>
+
+        <MegaMenu
+          isExtended={isExtended}
+          extendler={extendler}
+          activeTab={activeTab}
+        />
       </nav>
       {/* brand logo */}
       <Link href={"/"}>
@@ -49,96 +92,3 @@ export default function Header() {
     </header>
   );
 }
-
-export const LargeMenuItem = ({
-  item,
-  depthLevel,
-}: {
-  item: MenuItem;
-  depthLevel: number;
-}) => {
-  const [dropdown, setDropdown] = useState(false);
-  const [activeTab, setActiveTab] = useState("");
-
-  return (
-    <li
-      className={`list-none ml-2  border-l-gray-800  duration-200 shadow-sm text-xs   relative ${
-        depthLevel > 0
-          ? "py-4 px-2 bg-gray-200"
-          : "px-1 py-2 bg-gray-950 text-gray-50 border-l-[1px] last-of-type:border-none"
-      } `}
-    >
-      {item?.submenu ? (
-        <Fragment>
-          <button
-            type="button"
-            aria-haspopup="menu"
-            aria-expanded={dropdown ? "true" : "false"} //aria-expanded attribute to indicate if a dropdown box is expanded or collapsed, which is beneficial for screen readers.
-            onClick={() => {
-              setDropdown((prev) => !prev);
-              setActiveTab(item.title);
-            }}
-            className={`flex items-center justify-between w-full ${
-              depthLevel > 0 ? "bg-gray-200 text-gray-950" : "bg-gray-950"
-            }`}
-          >
-            {item?.title}{" "}
-            <span className="justify-self-start">
-              <ChevronDownIcon
-                className={`h-3 w-3  font-semibold ${
-                  depthLevel > 0 ? "text-gray-950" : "text-gray-50 mr-1"
-                }`}
-              />
-            </span>
-          </button>
-          <LargeDropdown
-            submenu={item.submenu}
-            parent={item}
-            dropdown={dropdown}
-            depthLevel={depthLevel}
-            activeTab={activeTab}
-          />
-        </Fragment>
-      ) : (
-        <Link
-          className="hover:text-blue-500 flex items-center group px-1"
-          href={item?.url}
-        >
-          {item?.title}
-        </Link>
-      )}
-    </li>
-  );
-};
-
-export const LargeDropdown = ({
-  submenu,
-  parent,
-  dropdown,
-  depthLevel,
-  activeTab,
-}: {
-  submenu: MenuItem[];
-  parent: MenuItem;
-  dropdown: boolean;
-  depthLevel: number;
-  activeTab: string;
-}) => {
-  depthLevel = 1 + depthLevel;
-  const dropdownClass =
-    depthLevel > 1 ? `right-[15em] -top-10 rounded-lg` : "top-10 right-0";
-
-  return (
-    <ul
-      className={`${
-        dropdown ? "block" : "hidden"
-      } ${dropdownClass} w-[15em] duration-300 ease-out absolute py-2`}
-    >
-      {activeTab === parent.title
-        ? submenu.map((submenu, index) => (
-            <LargeMenuItem item={submenu} key={index} depthLevel={depthLevel} />
-          ))
-        : null}
-    </ul>
-  );
-};

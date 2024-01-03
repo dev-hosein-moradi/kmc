@@ -65,7 +65,7 @@ export default function ProgressSlider({ items }: { items: Item[] }) {
             >
               <Suspense fallback={<HeroImageSkeleton />}>
                 <Image
-                  className="w-full h-auto object-cover"
+                  className="w-full h-full object-cover"
                   sizes="100vw"
                   quality={90}
                   src={item.img}

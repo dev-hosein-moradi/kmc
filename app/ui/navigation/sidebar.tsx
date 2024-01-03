@@ -63,17 +63,17 @@ export const menuItems = [
     ],
   },
   {
-    id: 2,
+    id: 7,
     title: "HYUNDAI",
     url: "#",
   },
   {
-    id: 3,
+    id: 6,
     title: "محصولات",
     url: "#",
   },
   {
-    id: 4,
+    id: 2,
     title: "نمایندگی ها",
     url: "#",
     submenu: [
@@ -97,7 +97,7 @@ export const menuItems = [
     url: "#",
   },
   {
-    id: 6,
+    id: 3,
     title: "خدمات پس از فروش",
     url: "#",
     submenu: [
@@ -121,7 +121,7 @@ export const menuItems = [
     ],
   },
   {
-    id: 7,
+    id: 4,
     title: "ارتباط با مشتریان",
     url: "#",
     submenu: [
