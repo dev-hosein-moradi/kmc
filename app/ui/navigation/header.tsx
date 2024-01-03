@@ -17,6 +17,7 @@ export default function Header() {
 
   const toggler = () => {
     setIsOpen(!isOpen);
+    document.body.style.overflow = !isOpen ? "hidden" : "unset";
   };
   const extendler = (id: number) => {
     if (id === activeTab) {
@@ -51,7 +52,7 @@ export default function Header() {
           {menuItems.map((item, index) => {
             return item.submenu ? (
               <li
-                className="border-l-[1px] border-gray-800 text-sm flex items-center ml-1 px-1 cursor-pointer"
+                className="border-l-[1px] border-gray-800 text-sm flex items-center ml-1 px-3 cursor-pointer"
                 key={index}
                 onClick={() => {
                   extendler(item.id);
@@ -68,7 +69,7 @@ export default function Header() {
               </li>
             ) : (
               <Link
-                className="border-l-[1px] border-gray-800 last-of-type:border-none text-sm ml-1 px-1"
+                className="border-l-[1px] border-gray-800 last-of-type:border-none text-sm ml-1 px-3 flex items-center"
                 key={index}
                 href={item.url}
               >

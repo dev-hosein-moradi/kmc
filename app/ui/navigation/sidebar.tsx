@@ -3,6 +3,7 @@ import { ChevronDownIcon } from "@heroicons/react/16/solid";
 import { LinkIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { Fragment, useState } from "react";
+import { NotificationButtonFloat } from "../buttons/buttons";
 
 export const menuItems = [
   {
@@ -173,7 +174,7 @@ export default function SideBar({
   const depthLevel: number = 0;
   return (
     <aside
-      className={`flex flex-col lg:hidden w-[100vw] h-[100vh] absolute top-0 bg-white duration-200 py-4 px-4 z-10  ${
+      className={`flex flex-col lg:hidden w-[100vw] h-[100vh] fixed top-0 bg-white duration-200 py-4 px-4 z-[100]  ${
         isOpen ? "left-0" : "left-[100vw]"
       }`}
     >
@@ -184,7 +185,10 @@ export default function SideBar({
         onClick={toggler}
         className="bg-gray-100 h-10 w-10 rounded-lg shadow-md flex items-center justify-center"
       >
-        <XMarkIcon aria-label="close icon" className="h-9 w-9 text-black font-semibold" />
+        <XMarkIcon
+          aria-label="close icon"
+          className="h-9 w-9 text-black font-semibold"
+        />
       </button>
 
       <ul className="overflow-y-auto my-6" dir="rtl">
@@ -192,6 +196,8 @@ export default function SideBar({
           <MenuItem key={index} item={menu} depthLevel={depthLevel} />
         ))}
       </ul>
+
+      <NotificationButtonFloat isOpen={isOpen} />
     </aside>
   );
 }
@@ -222,7 +228,10 @@ export const MenuItem = ({
           >
             {item?.title}{" "}
             <span className="justify-self-start">
-              <ChevronDownIcon aria-label="arrow down icon" className="h-5 w-5 text-black font-semibold" />
+              <ChevronDownIcon
+                aria-label="arrow down icon"
+                className="h-5 w-5 text-black font-semibold"
+              />
             </span>
           </button>
           <Dropdown

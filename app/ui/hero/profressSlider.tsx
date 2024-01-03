@@ -59,7 +59,7 @@ export default function ProgressSlider({ items }: { items: Item[] }) {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
               beforeEnter={() => heightFix()}
-              style={{ height: "400px", width: "100vw" }}
+              style={{ minHeight: "400px", maxHeight: '550px', height: '100%', width: "100vw" }}
             >
               <Suspense fallback={<HeroImageSkeleton />}>
                 <ImageCard item={item} />
@@ -75,7 +75,7 @@ export default function ProgressSlider({ items }: { items: Item[] }) {
 export const ImageCard = ({ item }: { item: Item }) => {
   return (
     <Image
-      className="w-full h-full object-cover"
+      className="w-full max-w-[1500px] min-h-[400px] max-h-[550px] h-full object-cover"
       sizes="100vw"
       placeholder="blur"
       quality={100}
