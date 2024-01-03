@@ -178,17 +178,20 @@ export default function SideBar({
       }`}
     >
       <button
+        type="button"
+        name="close sidebar menu"
+        aria-label="close sidebar menu"
         onClick={toggler}
         className="bg-gray-100 h-10 w-10 rounded-lg shadow-md flex items-center justify-center"
       >
-        <XMarkIcon className="h-9 w-9 text-black font-semibold" />
+        <XMarkIcon aria-label="close icon" className="h-9 w-9 text-black font-semibold" />
       </button>
 
-      <nav className="overflow-y-auto my-6" dir="rtl">
+      <ul className="overflow-y-auto my-6" dir="rtl">
         {menuItems.map((menu, index) => (
           <MenuItem key={index} item={menu} depthLevel={depthLevel} />
         ))}
-      </nav>
+      </ul>
     </aside>
   );
 }
@@ -219,7 +222,7 @@ export const MenuItem = ({
           >
             {item?.title}{" "}
             <span className="justify-self-start">
-              <ChevronDownIcon className="h-5 w-5 text-black font-semibold" />
+              <ChevronDownIcon aria-label="arrow down icon" className="h-5 w-5 text-black font-semibold" />
             </span>
           </button>
           <Dropdown

@@ -2,15 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Fragment, useState } from "react";
-import {
-  Bars3Icon,
-  ChevronDownIcon,
-  LinkIcon,
-} from "@heroicons/react/24/outline";
-import SideBar, { menuItems } from "./sidebar";
+import { lazy, useState } from "react";
+import { Bars3Icon, ChevronDownIcon } from "@heroicons/react/24/outline";
 import KMC_LOGO from "@/public/kmc-logo.png";
-import MegaMenu from "./megaMenu";
+import { menuItems } from "./sidebar";
+
+const MegaMenu = lazy(() => import("./megaMenu"));
+const SideBar = lazy(() => import("./sidebar"));
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,11 +33,20 @@ export default function Header() {
   return (
     <header className="flex items-center justify-between bg-gray-950 relative z-[6]">
       {/* burger menu */}
-      <button className="p-4 lg:hidden" onClick={toggler}>
-        <Bars3Icon className="h-8 w-8 text-gray-50 font-semibold" />
+      <button
+        type="button"
+        name="burger menu button"
+        aria-label="open side menu"
+        className="p-4 lg:hidden"
+        onClick={toggler}
+      >
+        <Bars3Icon
+          aria-label="burger menu icon"
+          className="h-8 w-8 text-gray-50 font-semibold"
+        />
       </button>
       {/* nav links for large screen */}
-      <nav className="lg:flex flex-row pr-4 hidden relative">
+      <div className="lg:flex flex-row pr-4 hidden relative">
         <ul className="flex flex-row text-white">
           {menuItems.map((item, index) => {
             return item.submenu ? (
@@ -53,7 +60,10 @@ export default function Header() {
               >
                 {item.title}
                 <span className="mr-1">
-                  <ChevronDownIcon className="h-3 w-3" />
+                  <ChevronDownIcon
+                    aria-label="arrow down icon"
+                    className="h-3 w-3"
+                  />
                 </span>
               </li>
             ) : (
@@ -73,7 +83,7 @@ export default function Header() {
           extendler={extendler}
           activeTab={activeTab}
         />
-      </nav>
+      </div>
       {/* brand logo */}
       <Link href={"/"}>
         <Image

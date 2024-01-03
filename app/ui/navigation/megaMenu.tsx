@@ -18,11 +18,17 @@ export default function MegaMenu({
         isExtended ? "top-[50px] opacity-100" : "-top-[400px] opacity-0"
       } absolute left-0 min-h-[200px] w-full bg-gray-950 text-gray-50 z-[5] border-t-gray-700 border-t-[1px] duration-300 rounded-b-lg shadow-2xl flex flex-col`}
     >
-      <button onClick={() => extendler(activeTab)} className="h-8 w-8 rounded-lg bg-gray-500 flex item-center justify-center mr-auto m-4 shadow-white shadow-sm">
-        <XMarkIcon className="h-8 w-8 text-black font-semibold" />
+      <button
+        type="button"
+        name="close menu"
+        aria-label="close menu button"
+        onClick={() => extendler(activeTab)}
+        className="h-8 w-8 rounded-lg bg-gray-500 flex item-center justify-center mr-auto m-4 shadow-white shadow-sm"
+      >
+        <XMarkIcon aria-label="close icon" className="h-8 w-8 text-black font-semibold" />
       </button>
       <div className="flex flex-row">
-        <ul className="">
+        <ul>
           {menus.length > 0 &&
             menus.map((menu) => (
               <li key={menu.id} className="drop">

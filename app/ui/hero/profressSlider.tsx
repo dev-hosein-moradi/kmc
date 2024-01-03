@@ -15,7 +15,6 @@ export default function ProgressSlider({ items }: { items: Item[] }) {
   const frame = useRef<number>(0);
   const firstFrameTime = useRef(performance.now());
   const [active, setActive] = useState<number>(0);
-  const [progress, setProgress] = useState<number>(0);
 
   useEffect(() => {
     firstFrameTime.current = performance.now();
@@ -28,11 +27,9 @@ export default function ProgressSlider({ items }: { items: Item[] }) {
   const animate = (now: number) => {
     let timeFraction = (now - firstFrameTime.current) / duration;
     if (timeFraction <= 1) {
-      setProgress(timeFraction * 100);
       frame.current = requestAnimationFrame(animate);
     } else {
       timeFraction = 1;
-      setProgress(0);
       setActive((active + 1) % items.length);
     }
   };
@@ -47,7 +44,7 @@ export default function ProgressSlider({ items }: { items: Item[] }) {
   }, []);
 
   return (
-    <div className="w-full md:h-[500px] lg:h-[550px] mx-auto text-center">
+    <div className="w-full mx-auto text-center">
       {/* Item image */}
       <div className="transition-all duration-1000 delay-300 ease-in-out">
         <div className="relative flex flex-col w-[100vw]" ref={itemsRef}>
@@ -62,16 +59,10 @@ export default function ProgressSlider({ items }: { items: Item[] }) {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
               beforeEnter={() => heightFix()}
+              style={{ height: "400px", width: "100vw" }}
             >
               <Suspense fallback={<HeroImageSkeleton />}>
-                <Image
-                  className="w-full h-full object-cover"
-                  sizes="100vw"
-                  quality={90}
-                  src={item.img}
-                  alt={item.desc}
-                  priority
-                />
+                <ImageCard item={item} />
               </Suspense>
             </Transition>
           ))}
@@ -80,3 +71,17 @@ export default function ProgressSlider({ items }: { items: Item[] }) {
     </div>
   );
 }
+
+export const ImageCard = ({ item }: { item: Item }) => {
+  return (
+    <Image
+      className="w-full h-full object-cover"
+      sizes="100vw"
+      placeholder="blur"
+      quality={100}
+      src={item.img}
+      alt={item.desc}
+      priority
+    />
+  );
+};
