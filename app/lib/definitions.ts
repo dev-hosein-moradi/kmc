@@ -8,3 +8,10 @@ export interface NewsItem {
     link: string;
     newsPriority: boolean;
 }
+
+export interface MenuItemSide {
+    id?: number;
+    title: string;
+    url: string;
+    submenu?: MenuItemSide[];
+  }

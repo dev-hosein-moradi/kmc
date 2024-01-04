@@ -1,14 +1,15 @@
 "use client";
+import dynamic from "next/dynamic";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import news1 from "@/public/news/news1.webp";
 import news2 from "@/public/news/news2.webp";
 import news3 from "@/public/news/j7-video.webp";
-import Slide from "./slide";
 
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+const Slide = dynamic(() => import("./slide"));
 
 export const newsItem = [
   {
@@ -48,7 +49,7 @@ export default function Slides() {
         slidesPerView={1}
         spaceBetween={10}
         pagination={{
-          type: "custom",
+          type: "bullets",
           clickable: true,
         }}
         navigation={true}
@@ -76,8 +77,6 @@ export default function Slides() {
           );
         })}
       </Swiper>
-
-      
     </div>
   );
 }

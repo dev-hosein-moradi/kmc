@@ -1,8 +1,9 @@
-import { lazy } from "react";
-import Header from "./ui/navigation/header";
+import dynamic from "next/dynamic";
 import Hero from "./ui/hero/hero";
-const ShortcutsBox = lazy(() => import("./ui/shrotcuts-box/shortcutsBox"));
-const News = lazy(() => import("./ui/news/news"));
+
+const Header = dynamic(() => import("./ui/navigation/header"));
+const ShortcutsBox = dynamic(() => import("./ui/shrotcuts-box/shortcutsBox"));
+const News = dynamic(() => import("./ui/news/news"));
 
 export default function Home() {
   return (

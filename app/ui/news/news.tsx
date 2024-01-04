@@ -1,11 +1,12 @@
 import { GlobeEuropeAfricaIcon } from "@heroicons/react/24/outline";
-import Slides from "./slides";
 import { NewsCard } from "../skeletons";
 import { Suspense } from "react";
+import dynamic from "next/dynamic";
+const Slides = dynamic(() => import("./slides"));
 
 export default function News() {
   return (
-    <section className="py-16 w-full h-auto flex flex-col items-center">
+    <section className="py-16 w-full h-auto flex flex-col items-center overflow-x-hidden">
       <h3 className="font-semibold text-2xl text-gray-900 text-center">
         آخرین اخبار و اطلاعیه ها
       </h3>

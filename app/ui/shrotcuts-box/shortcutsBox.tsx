@@ -6,8 +6,8 @@ import {
   PhoneArrowDownLeftIcon,
   WrenchScrewdriverIcon,
 } from "@heroicons/react/24/outline";
-import { lazy } from "react";
-const ShortcutBox = lazy(() => import("./shortcutBox"));
+import dynamic from "next/dynamic";
+const ShortcutBox = dynamic(() => import("./shortcutBox"));
 
 export const item = [
   {

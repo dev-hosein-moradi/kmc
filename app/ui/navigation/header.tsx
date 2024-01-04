@@ -2,13 +2,15 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { lazy, useState } from "react";
+import { useState } from "react";
+import dynamic from "next/dynamic";
+
 import { Bars3Icon, ChevronDownIcon } from "@heroicons/react/24/outline";
 import KMC_LOGO from "@/public/kmc-logo.png";
 import { menuItems } from "./sidebar";
 
-const MegaMenu = lazy(() => import("./megaMenu"));
-const SideBar = lazy(() => import("./sidebar"));
+const MegaMenu = dynamic(() => import("./megaMenu"));
+const SideBar = dynamic(() => import("./sidebar"));
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -93,7 +95,7 @@ export default function Header() {
           src={KMC_LOGO}
           width={55}
           height={55}
-          quality={100}
+          quality={60}
           priority
           className="w-auto h-auto p-4"
         />
