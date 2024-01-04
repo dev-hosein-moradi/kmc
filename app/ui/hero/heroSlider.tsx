@@ -2,7 +2,6 @@
 import { Transition } from "@headlessui/react";
 import { useState, useRef, useEffect, Suspense } from "react";
 import Image, { StaticImageData } from "next/image";
-import { HeroImageSkeleton, shimmer } from "../skeletons";
 
 interface Item {
   img: StaticImageData;
@@ -70,7 +69,6 @@ export default function ProgressSlider({ items }: { items: Item[] }) {
 }
 
 export const ImageCard = ({ item }: { item: Item }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
   return (
     <Image
       className={`w-full h-full object-cover relative`}
