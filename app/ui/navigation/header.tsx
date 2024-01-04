@@ -95,7 +95,7 @@ export default function Header() {
           src={KMC_LOGO}
           width={55}
           height={55}
-          quality={60}
+          quality={50}
           priority
           className="w-auto h-auto p-4"
         />
