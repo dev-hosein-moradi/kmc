@@ -52,7 +52,7 @@ export default function Header() {
           {menuItems.map((item, index) => {
             return item.submenu ? (
               <li
-                className="border-l-[1px] border-gray-800 text-sm flex items-center ml-1 px-3 cursor-pointer"
+                className="border-l-[1px] border-gray-800 text-sm flex items-center ml-1 px-1 xl:px-3 cursor-pointer"
                 key={index}
                 onClick={() => {
                   extendler(item.id);
@@ -70,7 +70,7 @@ export default function Header() {
             ) : (
               <li key={index}>
                 <Link
-                  className="border-l-[1px] border-gray-800 last-of-type:border-none text-sm ml-1 px-3 flex items-center"
+                  className="border-l-[1px] border-gray-800 last-of-type:border-none text-sm ml-1 px-1 xl:px-3 flex items-center"
                   href={item.url}
                 >
                   {item.title}

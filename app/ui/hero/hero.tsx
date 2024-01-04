@@ -1,6 +1,6 @@
 import K7 from "@/public/hero/k7.webp";
 import X5 from "@/public/hero/X5.webp";
-import ProgressSlider from "./heroSlider";
+import HeroSlider from "./heroSlider";
 
 export default function Home() {
   const items = [
@@ -16,7 +16,7 @@ export default function Home() {
 
   return (
     <div className="relative bg-slate-50 overflow-hidden z-0">
-      <ProgressSlider items={items} />
+      <HeroSlider items={items} />
     </div>
   );
 }

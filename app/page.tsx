@@ -1,6 +1,8 @@
+import { lazy } from "react";
 import Header from "./ui/navigation/header";
 import Hero from "./ui/hero/hero";
-import ShortcutsBox from "./ui/shrotcuts-box/shortcutsBox";
+const ShortcutsBox = lazy(() => import("./ui/shrotcuts-box/shortcutsBox"));
+const News = lazy(() => import("./ui/news/news"));
 
 export default function Home() {
   return (
@@ -8,6 +10,7 @@ export default function Home() {
       <Header />
       <Hero />
       <ShortcutsBox />
+      <News />
     </main>
   );
 }

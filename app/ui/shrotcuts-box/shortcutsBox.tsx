@@ -6,9 +6,8 @@ import {
   PhoneArrowDownLeftIcon,
   WrenchScrewdriverIcon,
 } from "@heroicons/react/24/outline";
-import ShortcutBox from "./shortcutBox";
-import { Suspense } from "react";
-import { ShortcutBoxSkeleton } from "../skeletons";
+import { lazy } from "react";
+const ShortcutBox = lazy(() => import("./shortcutBox"));
 
 export const item = [
   {
@@ -65,9 +64,7 @@ export default function ShortcutsBox() {
   return (
     <section className="flex flex-row flex-wrap items-center justify-center gap-4 py-16 w-full h-auto">
       {item.map((item, index) => (
-        <Suspense key={index} fallback={<ShortcutBoxSkeleton />}>
-          <ShortcutBox item={item} key={index} />
-        </Suspense>
+        <ShortcutBox item={item} key={index} />
       ))}
     </section>
   );

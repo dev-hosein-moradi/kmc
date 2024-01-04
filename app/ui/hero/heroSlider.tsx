@@ -8,7 +8,7 @@ interface Item {
   desc: string;
 }
 
-export default function ProgressSlider({ items }: { items: Item[] }) {
+export default function HeroSlider({ items }: { items: Item[] }) {
   const duration: number = 5000;
   const itemsRef = useRef<HTMLDivElement>(null);
   const frame = useRef<number>(0);
@@ -21,6 +21,7 @@ export default function ProgressSlider({ items }: { items: Item[] }) {
     return () => {
       cancelAnimationFrame(frame.current);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active]);
 
   const animate = (now: number) => {
@@ -58,6 +59,7 @@ export default function ProgressSlider({ items }: { items: Item[] }) {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
               beforeEnter={() => heightFix()}
+              className={"w-full h-full"}
             >
               <ImageCard item={item} />
             </Transition>
@@ -71,10 +73,10 @@ export default function ProgressSlider({ items }: { items: Item[] }) {
 export const ImageCard = ({ item }: { item: Item }) => {
   return (
     <Image
-      className={`w-full h-full object-cover relative`}
+      className={`w-full h-auto object-cover relative`}
       placeholder="blur"
       sizes="100vw"
-      quality={100}
+      quality={50}
       src={item.img}
       alt={item.desc}
       priority
