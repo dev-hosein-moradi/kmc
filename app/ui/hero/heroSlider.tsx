@@ -2,7 +2,7 @@
 import { Transition } from "@headlessui/react";
 import { useState, useRef, useEffect, Suspense } from "react";
 import Image, { StaticImageData } from "next/image";
-import { HeroImageSkeleton } from "../skeletons";
+import { HeroImageSkeleton, shimmer } from "../skeletons";
 
 interface Item {
   img: StaticImageData;
@@ -59,11 +59,8 @@ export default function ProgressSlider({ items }: { items: Item[] }) {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
               beforeEnter={() => heightFix()}
-              style={{ minHeight: "400px", maxHeight: '550px', height: '100%', width: "100vw" }}
             >
-              <Suspense fallback={<HeroImageSkeleton />}>
-                <ImageCard item={item} />
-              </Suspense>
+              <ImageCard item={item} />
             </Transition>
           ))}
         </div>
@@ -73,11 +70,12 @@ export default function ProgressSlider({ items }: { items: Item[] }) {
 }
 
 export const ImageCard = ({ item }: { item: Item }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
   return (
     <Image
-      className="w-full max-w-[1500px] min-h-[400px] max-h-[550px] h-full object-cover"
-      sizes="100vw"
+      className={`w-full h-full object-cover relative`}
       placeholder="blur"
+      sizes="100vw"
       quality={100}
       src={item.img}
       alt={item.desc}

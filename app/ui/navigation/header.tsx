@@ -68,13 +68,14 @@ export default function Header() {
                 </span>
               </li>
             ) : (
-              <Link
-                className="border-l-[1px] border-gray-800 last-of-type:border-none text-sm ml-1 px-3 flex items-center"
-                key={index}
-                href={item.url}
-              >
-                {item.title}
-              </Link>
+              <li key={index}>
+                <Link
+                  className="border-l-[1px] border-gray-800 last-of-type:border-none text-sm ml-1 px-3 flex items-center"
+                  href={item.url}
+                >
+                  {item.title}
+                </Link>
+              </li>
             );
           })}
         </ul>
