@@ -4,6 +4,9 @@ import Hero from "./ui/hero/hero";
 const Header = dynamic(() => import("./ui/navigation/header"));
 const ShortcutsBox = dynamic(() => import("./ui/shrotcuts-box/shortcutsBox"));
 const News = dynamic(() => import("./ui/news/news"));
+const PartnershipBrand = dynamic(
+  () => import("./ui/partnership-brand/partnershipBrand")
+);
 
 export default function Home() {
   return (
@@ -12,6 +15,7 @@ export default function Home() {
       <Hero />
       <ShortcutsBox />
       <News />
+      <PartnershipBrand />
     </main>
   );
 }

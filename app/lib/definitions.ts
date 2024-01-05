@@ -14,4 +14,8 @@ export interface MenuItemSide {
     title: string;
     url: string;
     submenu?: MenuItemSide[];
-  }
+}
+
+export interface BrandLogo {
+    imageSrc: StaticImageData
+}

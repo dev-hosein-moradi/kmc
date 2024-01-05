@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function Slide({ item }: { item: NewsItem }) {
   const { imageSrc, title, detail, date, link, newsPriority } = item;
   return (
-    <div className="flex flex-col justify-between px-4 py-2 mb-4 w-[250px] sm:w-[300px] min-h-[430px] sm:min-h-[430px] mx-auto bg-white border-gray-100 border-[1px] shadow-lg rounded-xl">
+    <div className="flex flex-col justify-between px-4 py-2 mb-4 w-[250px] sm:w-[300px]  mx-auto bg-white border-gray-100 border-[1px] shadow-lg rounded-xl">
       <Image
         className="relative w-full h-[200px] object-cover rounded-xl"
         sizes="100vw"
