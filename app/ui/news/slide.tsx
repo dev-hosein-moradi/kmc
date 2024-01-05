@@ -13,7 +13,7 @@ export default function Slide({ item }: { item: NewsItem }) {
         src={imageSrc}
         quality={50}
         placeholder="blur"
-        priority
+        loading="lazy"
       />
       <article className="py-2 flex flex-col">
         <h4 className="text-gray-900 text-sm sm:text-base font-medium">

@@ -6,7 +6,7 @@ export default function PartnershipCard({ item }: { item: BrandLogo }) {
   return (
     <Link href={"/"} className="mx-10 hover:scale-105 duration-300">
       <Image
-        className="w-auto min-w-[200px] h-full object-cover"
+        className="w-auto min-w-[150px] h-auto object-cover"
         alt={`partner logo`}
         src={item.imageSrc}
         quality={50}
