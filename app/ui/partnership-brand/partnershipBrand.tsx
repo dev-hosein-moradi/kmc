@@ -44,13 +44,13 @@ const cardItem = [
 
 export default function PartnershipBrand() {
   return (
-    <div className="group py-10 flex flex-row overflow-x-hidden bg-white whitespace-nowrap relative">
-      <div className="flex flex-row animate-[brandSlide_30s_infinite_linear] group-hover:[animation-play-state:paused]">
+    <div className="py-10 flex flex-row overflow-x-hidden bg-white whitespace-nowrap relative">
+      <div className="flex flex-row animate-[brandSlide_30s_infinite_linear]">
         {cardItem.map((item, index) => (
           <PartnershipCard key={index} item={item} />
         ))}
       </div>
-      <div className="flex flex-row animate-[brandSlide_30s_infinite_linear] group-hover:[animation-play-state:paused]">
+      <div className="flex flex-row animate-[brandSlide_30s_infinite_linear]">
         {cardItem.map((item, index) => (
           <PartnershipCard key={index} item={item} />
         ))}

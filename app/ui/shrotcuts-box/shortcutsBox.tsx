@@ -62,7 +62,7 @@ export interface Shortcut {
 
 export default function ShortcutsBox() {
   return (
-    <section className="flex flex-row flex-wrap items-center justify-center gap-4 py-16 w-full h-auto">
+    <section className="flex flex-row flex-wrap items-center justify-center gap-4 py-16 w-full">
       {item.map((item, index) => (
         <ShortcutBox item={item} key={index} />
       ))}

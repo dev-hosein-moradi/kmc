@@ -21,7 +21,7 @@ export default function HeroSlider({ items }: { items: Item[] }) {
     return () => {
       cancelAnimationFrame(frame.current);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active]);
 
   const animate = (now: number) => {
@@ -73,10 +73,9 @@ export default function HeroSlider({ items }: { items: Item[] }) {
 export const ImageCard = ({ item }: { item: Item }) => {
   return (
     <Image
-      className={`w-full h-auto object-cover relative`}
+      className={`object-cover h-auto w-full relative block`}
       placeholder="blur"
-      sizes="100vw"
-      quality={50}
+      quality={60}
       src={item.img}
       alt={item.desc}
       priority

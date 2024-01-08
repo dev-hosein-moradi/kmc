@@ -2,11 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-    .pause {
-        animation-play-state: paused;
-    }
-}
+@layer utilities {}
 
 .swiper-button-prev {
     color: rgb(155, 158, 155) !important;

@@ -44,7 +44,7 @@ export const newsItem = [
 
 export default function Slides() {
   return (
-    <div className="w-[100vw] px-1 h-auto">
+    <div className="w-[100vw] px-1 h-auto min-h-[550px]">
       <Swiper
         slidesPerView={1}
         spaceBetween={10}

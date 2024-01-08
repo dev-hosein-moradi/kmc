@@ -40,7 +40,7 @@ export default function Header() {
         type="button"
         name="burger menu button"
         aria-label="open side menu"
-        className="p-4 lg:hidden"
+        className="p-4 w-[64px] h-[64px] lg:hidden"
         onClick={toggler}
       >
         <Bars3Icon
@@ -54,7 +54,7 @@ export default function Header() {
           {menuItems.map((item, index) => {
             return item.submenu ? (
               <li
-                className="border-l-[1px] border-gray-800 text-sm flex items-center ml-1 px-1 xl:px-3 cursor-pointer"
+                className="w-auto border-l-[1px] border-gray-800 text-sm flex items-center ml-1 px-1 xl:px-3 cursor-pointer"
                 key={index}
                 onClick={() => {
                   extendler(item.id);
@@ -89,7 +89,7 @@ export default function Header() {
         />
       </div>
       {/* brand logo */}
-      <Link href={"/"}>
+      <Link href={"/"} className="w-[100px] h-[80px]">
         <Image
           alt="kerman motor logo"
           src={KMC_LOGO}
@@ -97,7 +97,7 @@ export default function Header() {
           height={55}
           quality={50}
           priority
-          className="w-auto h-auto p-4"
+          className="w-auto h-auto p-4 object-cover"
         />
       </Link>
 

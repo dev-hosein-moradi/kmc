@@ -2,6 +2,12 @@
 export const shimmer =
   "before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/60 before:to-transparent z-50";
 
+export function HeroImageSkeleton() {
+  return (
+    <div className={`${shimmer} bg-gray-200 rounded-xl w-full h-full`}></div>
+  );
+}
+
 export function ShortcutBoxSkeleton() {
   return (
     <div
@@ -15,7 +21,9 @@ export function ShortcutBoxSkeleton() {
 
 export function NewsCard() {
   return (
-    <div className={`${shimmer} p-4 w-[250px] h-[430px] rounded-xl shadow-xl flex flex-col justify-between`}>
+    <div
+      className={`${shimmer} p-4 w-[250px] h-[430px] rounded-xl shadow-xl flex flex-col justify-between`}
+    >
       <div className={`w-[200px] h-[200px] bg-gray-200 rounded-xl`}></div>
       <div className={`w-[200px] h-[20px] bg-gray-200 rounded-xl`}></div>
       <div className={`w-[150px] h-[20px] bg-gray-200 rounded-xl`}></div>

@@ -25,8 +25,8 @@ const config: Config = {
       },
       animation: {
         shimmer: '2s infinite',
-        brandSlide: '3s infinite linear'
-      },
+        brandSlide: '30s infinite linear'
+      }
     },
   },
 

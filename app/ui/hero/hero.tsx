@@ -15,7 +15,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="relative bg-slate-50 overflow-hidden z-0">
+    <div className="relative w-[100vw] bg-gray-50 overflow-hidden z-0">
       <HeroSlider items={items} />
     </div>
   );
