@@ -17,17 +17,6 @@ export const metadata: Metadata = {
   formatDetection: {
     telephone: false,
   },
-  openGraph: {
-    type: "website",
-    siteName: "کرمان موتور",
-    title: "کرمان موتور",
-    description: "شرکت خودرو سازی کرمان موتور",
-  },
-  twitter: {
-    card: "summary",
-    title: "کرمان موتور",
-    description: "شرکت خودرو سازی کرمان موتور",
-  },
 };
 
 export const viewport: Viewport = {
